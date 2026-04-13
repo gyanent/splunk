@@ -1,1 +1,41 @@
+### Input phase ### 
+handled at universal forwarder, heavy forwarder
+data sources are open and read
+configs are applied to entire streams
+data sent out for indexing
+
+### Parsing phase ###
+handled at Indexer
+Heavy forwarder
+data broken into events
+extract default metadata fields - host, source, sourcetype, index (default: main)
+identify or create timestamps
+
+### Indexing phase ###
+handled at indexer
+write data to disk
+run license meter
+
+### Data inputs ###
+Upload
+only gets indexed once
+
+Monitor
+monitor files and dirs, network ports etc
+data located in splunk enterprise instances
+useful for testing
+
+Forward
+get data from remove machines over receiving port
+remote machines have forwarders installed
+
+
+
+source="access.log" host="webserver1" index="web" sourcetype="access_combined"
+
+index="main" sourcetype="eventgen"
+| eval callResult=if(responseCode==200, "Success", "Failure")
+| eval failureCode=if(responseCode>=400, responseCode, null())
+
+
 
