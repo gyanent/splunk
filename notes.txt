@@ -37,5 +37,9 @@ index="main" sourcetype="eventgen"
 | eval callResult=if(responseCode==200, "Success", "Failure")
 | eval failureCode=if(responseCode>=400, responseCode, null())
 
+(host01 OR host09) earliest=-24h latest=now
+(host01 OR host09) earliest=-7d@d latest=@d
+
+
 
 
